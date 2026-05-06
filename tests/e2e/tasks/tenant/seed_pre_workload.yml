@@ -103,12 +103,6 @@
     mode: 0700
     state: directory
 
-- name: Ensure ssh-ci directory exists
-  ansible.builtin.file:
-    path: "{{ '~' | expanduser }}/ssh-ci"
-    state: directory
-    mode: '0700'
-
 - name: Generate a keypair for the migration
   # This will not regenerate the key if
   # it already exists
