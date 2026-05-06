@@ -6,6 +6,8 @@
 
 - name: Generate a keypair for the conversion host
   ansible.builtin.shell: >
-    ssh-keygen -t rsa -b 4096 -f "{{ os_migrate_conversion_keypair_private_path }}" -N ""
+    ssh-keygen -t {{ os_migrate_conversion_host_ssh_key_type }}
+    {% if os_migrate_conversion_host_ssh_key_type != 'ed25519' %}-b {{ os_migrate_conversion_host_ssh_key_bits }}{% endif %}
+    -f "{{ os_migrate_conversion_keypair_private_path }}" -N ""
   args:
     creates: "{{ os_migrate_conversion_keypair_private_path }}"
