@@ -105,7 +105,7 @@
 
 - name: Generate a keypair for the migration
   ansible.builtin.shell: >
-    ssh-keygen -t ed25519 -f "{{ '~' | expanduser }}/ssh-ci/id_rsa }}" -N ""
+    ssh-keygen -t ed25519 -f "{{ '~' | expanduser }}/ssh-ci/id_rsa" -N ""
 
 - name: Create new keypair as osm_key
   os_migrate.os_migrate.keypair:
